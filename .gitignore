@@ -6,3 +6,4 @@
 4_struct/packed/packed_struct
 0_urn/sbrk_func
 0_urn/malloc_calloc_realloc
+0_urn/alloca_func
