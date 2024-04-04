@@ -68,9 +68,9 @@ int main(void)
                         }
                         else {
                             printf("Delete user: First name: %-16s  Second name: %-16s  Number: %-16s\n", user[i].first_name, user[i].second_name, user[i].number);
-                            strcpy(user[counter-1].first_name, user[i].first_name);
-                            strcpy(user[counter-1].second_name, user[i].second_name);
-                            strcpy(user[counter-1].number, user[i].number);
+                            strcpy(user[i].first_name, user[counter-1].first_name);
+                            strcpy(user[i].second_name, user[counter-1].second_name);
+                            strcpy(user[i].number, user[counter-1].number);
                             counter--;
                             i--;
                             counter_fd++;
