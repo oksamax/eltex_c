@@ -11,7 +11,7 @@ struct list {
 
 int main(void)
 {
-    struct list *user;
+    struct list *user = NULL;
     int item = 0, counter = 0, i = 0, counter_fd = 0;
     char find_delete[16] = {'0'};
 
@@ -86,6 +86,7 @@ int main(void)
                         if (counter == 1) {
                             printf("Delete user: First name: %-16s  Second name: %-16s  Number: %-16s\n", user->first_name, user->second_name, user->number);
                             free(user);
+                            user = NULL;
                             counter--;
                             counter_fd++;
                         }
@@ -122,7 +123,7 @@ int main(void)
         puts("\n\n");
     } while(item != 5);
 
-    free(user);
+    if(user != 0) free(user);
 
     return 0;
 }
