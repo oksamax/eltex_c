@@ -4,26 +4,43 @@
 int main(void)
 {
     float (*func[10])(float, float) = { NULL }, var_a = 0, var_b = 0;
-    void *dl_lib = NULL;
+    void *ptr_dl_lib = NULL;
+    char lib_name[16] = {'0'}, func_list[10][16] = {'0'}, func_name[16] = {'0'};
+    int count = 0, item = 0;
 
-    dl_lib = dlopen("libcalc.so", RTLD_LAZY);
+    do {
+        printf("Enter the library name:");
+        scanf("%s",lib_name);
 
-    if (NULL == dl_lib){
-        printf("there isn't such library\n");
-    }
+        ptr_dl_lib = dlopen(lib_name, RTLD_LAZY);
 
-    func[0] = dlsym(dl_lib, "add");
+        if (NULL == ptr_dl_lib){
+            printf("There isn't such library\n");
+        }
+    } while (NULL == ptr_dl_lib);
 
-    if (NULL == func[0]) {
-        printf("there isn't such func");
-    }
+    do {
+        printf("creating a calculator menu")
 
-    var_a = 10;
-    var_b = 11.1;
+        if(1 == item){
+            printf("Enter the function name:");
+            scanf("%s",func_name);
+            if (dlsym(ptr_dl_lib, func_name) != NULL) {
+                func[count] = dlsym(ptr_dl_lib, func_name);
+                strcpy();
+                count++;
+            }
+            else printf("there isn't such func");
+            
+        }
+        else if (2 == item) {
 
-    printf("a + b = %.2f", func[0](var_a, var_b));
+        }
+        else if (item != 3) printf();
+  
+    } while (item != 3)
 
-    dlclose(dl_lib);
+    dlclose(ptr_dl_lib);
 
     return 0;
 }
